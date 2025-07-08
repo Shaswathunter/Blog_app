@@ -17,14 +17,17 @@ const MONOGO_URL = process.env.MONOG_URI;
 //middleware
 app.use(express.json());
 app.use(cookieParser());
+
 app.use(
   cors({
-    origin: process.env.FRONTEND_URL,
+    origin: [
+      "http://localhost:5173",
+      "https://blog-app-dba3-git-main-shaswats-projects-8ae42caa.vercel.app"
+    ],
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE"],
   })
 );
-
 app.use(
   fileUpload({
     useTempFiles: true,
