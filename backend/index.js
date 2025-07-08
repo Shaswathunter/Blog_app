@@ -22,12 +22,17 @@ app.use(
   cors({
     origin: [
       "http://localhost:5173",
-      "https://blog-app-dba3-git-main-shaswats-projects-8ae42caa.vercel.app"
+     "https://blog-app-eylr.vercel.app"
     ],
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE"],
   })
 );
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "https://blog-app-eylr.vercel.app");
+  res.header("Access-Control-Allow-Credentials", "true");
+  next();
+});
 app.use(
   fileUpload({
     useTempFiles: true,
